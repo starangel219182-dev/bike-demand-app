@@ -1,0 +1,38 @@
+name: Automated Retraining Pipeline
+
+on:
+  schedule:
+    # Runs every Sunday at midnight UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Trigger reason (e.g. new data, drift)'
+        required: false
+        default: 'manual trigger'
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mlflow scikit-learn pandas numpy
+
+      - name: Run Model Training Experiments
+        run: |
+          python src/train.py
+
+      - name: Evaluate Models & Promote Best Champion
+        run: |
+          python src/evaluate_and_register.py

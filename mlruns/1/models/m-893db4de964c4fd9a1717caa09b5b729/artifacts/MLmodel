@@ -1,0 +1,43 @@
+artifact_path: file:C:/Users/vaish/Desktop/bike-demand-app/mlruns/1/models/m-893db4de964c4fd9a1717caa09b5b729/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.14.6
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.1
+    skops_trusted_types:
+    - sklearn.tree._tree.Tree
+is_signature_from_type_hint: false
+mlflow_version: 3.16.1
+model_id: m-893db4de964c4fd9a1717caa09b5b729
+model_size_bytes: 10515
+model_uuid: m-893db4de964c4fd9a1717caa09b5b729
+prompts: null
+run_id: a71defef616140928a30ddc43a64b9cb
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "season", "required": true}, {"type": "double",
+    "name": "yr", "required": true}, {"type": "double", "name": "mnth", "required":
+    true}, {"type": "double", "name": "hr", "required": true}, {"type": "double",
+    "name": "holiday", "required": true}, {"type": "double", "name": "weekday", "required":
+    true}, {"type": "double", "name": "workingday", "required": true}, {"type": "double",
+    "name": "weathersit", "required": true}, {"type": "double", "name": "temp", "required":
+    true}, {"type": "double", "name": "atemp", "required": true}, {"type": "double",
+    "name": "hum", "required": true}, {"type": "double", "name": "windspeed", "required":
+    true}]'
+  outputs: '[{"type": "double", "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-09-25 14:50:13.104481'
